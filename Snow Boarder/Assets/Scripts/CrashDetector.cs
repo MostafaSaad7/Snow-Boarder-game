@@ -7,6 +7,9 @@ public class CrashDetector : MonoBehaviour
 {
   [SerializeField] float loadDelay=.5f;
   [SerializeField] ParticleSystem crashEffect;
+  
+  //to choose which audio to play  
+  [SerializeField]  AudioClip  crashSFX;
 
 
 
@@ -16,6 +19,8 @@ public class CrashDetector : MonoBehaviour
         if(other.tag == "Ground")
         {
           crashEffect.Play();
+          GetComponent<AudioSource>().PlayOneShot(crashSFX);
+          // play specific audio you choosed
           Invoke("ReloadScene",loadDelay);// sec unit 
         }
 
